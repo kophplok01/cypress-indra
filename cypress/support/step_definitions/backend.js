@@ -5,7 +5,7 @@ const postSchema = require("../../schemas/postSchema.json");
 let apiResponse;
 
 Given("I request a post by id", () => {
-  cy.api("GET", "https://jsonplaceholder.typicode.com/posts/1").then((response) => {
+  cy.api("GET", `${Cypress.env("apiUrl")}/posts/1`).then((response) => {
     apiResponse = response;
   });
 });
