@@ -29,6 +29,8 @@
     "cypress": "^15.16.0",
     "cypress-ajv-schema-validator": "^2.0.2",
     "cypress-if": "^1.13.2",
+    "cypress-mochawesome-reporter": "^4.0.2",
+    "cypress-multi-reporters": "^2.0.5",
     "cypress-plugin-api": "^2.11.2",
     "cypress-real-events": "^1.15.0",
     "cypress-wait-until": "^3.0.2",
@@ -36,6 +38,9 @@
     "esbuild": "^0.28.0",
     "fs-extra": "^11.3.3",
     "handlebars": "^4.7.8",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2",
     "uuid": "^13.0.0"
   }
 }

@@ -11,6 +11,19 @@ const { loadEnvironmentConfig } = require("./cypress/config/load-env");
 const environmentConfig = loadEnvironmentConfig(process.env.ENVIRONMENT);
 
 module.exports = defineConfig({
+  reporter: "cypress-mochawesome-reporter",
+  reporterOptions: {
+    reportDir: "reports/mochawesome",
+    charts: true,
+    reportPageTitle: "Cypress Technical Report",
+    embeddedScreenshots: true,
+    inlineAssets: true,
+    saveAllAttempts: false,
+    overwrite: false,
+    html: true,
+    json: true,
+  },
+
   e2e: {
     specPattern: "cypress/e2e/**/*.feature",
     supportFile: "cypress/support/e2e.js",
@@ -25,6 +38,8 @@ module.exports = defineConfig({
 
     async setupNodeEvents(on, config) {
       await addCucumberPreprocessorPlugin(on, config);
+
+      require("cypress-mochawesome-reporter/plugin")(on);
 
       on(
         "file:preprocessor",
