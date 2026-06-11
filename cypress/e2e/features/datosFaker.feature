@@ -1,4 +1,4 @@
-Feature: Synthetic data utilities
+Feature: data utilities
 
   Scenario: Generate valid synthetic user data
     Given I generate synthetic user data
