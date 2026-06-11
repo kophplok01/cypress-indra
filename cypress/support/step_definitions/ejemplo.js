@@ -1,9 +1,10 @@
 const { Given, Then } = require("@badeball/cypress-cucumber-preprocessor");
+const examplePage = require("../../pages/ejemploPage");
 
 Given("I open the example page", () => {
-  cy.visit("/");
+  examplePage.visit();
 });
 
 Then("I should see the Kitchen Sink page", () => {
-  cy.contains("Kitchen Sink").should("be.visible");
+  examplePage.validateKitchenSinkTitleIsVisible();
 });
