@@ -21,8 +21,10 @@
     "@badeball/cypress-cucumber-preprocessor": "^24.0.1",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
     "@cucumber/gherkin-utils": "^11.0.0",
+    "@faker-js/faker": "^10.3.0",
     "@testing-library/cypress": "^10.1.0",
     "ajv": "^8.17.1",
+    "cors": "^2.8.6",
     "cross-env": "^10.1.0",
     "cypress": "^15.16.0",
     "cypress-ajv-schema-validator": "^2.0.2",
@@ -30,7 +32,10 @@
     "cypress-plugin-api": "^2.11.2",
     "cypress-real-events": "^1.15.0",
     "cypress-wait-until": "^3.0.2",
+    "dayjs": "^1.11.19",
     "esbuild": "^0.28.0",
-    "fs-extra": "^11.3.3"
+    "fs-extra": "^11.3.3",
+    "handlebars": "^4.7.8",
+    "uuid": "^13.0.0"
   }
 }
