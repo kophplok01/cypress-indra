@@ -1,0 +1,5 @@
+{
+  "envName": "pro",
+  "baseUrl": "https://example.cypress.io",
+  "apiUrl": "https://jsonplaceholder.typicode.com"
+}
