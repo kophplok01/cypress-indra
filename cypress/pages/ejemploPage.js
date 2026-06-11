@@ -1,4 +1,4 @@
-class ExamplePage {
+class EjemploPage {
   visit() {
     cy.openHomePage();
   }
@@ -6,6 +6,18 @@ class ExamplePage {
   validateKitchenSinkTitleIsVisible() {
     cy.validateTextIsVisible("Kitchen Sink");
   }
+
+  validateCommandsSectionIsVisible() {
+    cy.validateTextIsVisible("Commands");
+  }
+
+  validateCurrentUrl() {
+    cy.validateUrlContains("example.cypress.io");
+  }
+
+  validatePageUsingTestingLibrary() {
+    cy.findByText("Kitchen Sink").should("be.visible");
+  }
 }
 
-module.exports = new ExamplePage();
+module.exports = new EjemploPage();
