@@ -1,10 +1,22 @@
 const { Given, Then } = require("@badeball/cypress-cucumber-preprocessor");
-const examplePage = require("../../pages/ejemploPage");
+const ejemploPage = require("../../pages/ejemploPage");
 
 Given("I open the example page", () => {
-  examplePage.visit();
+  ejemploPage.visit();
 });
 
 Then("I should see the Kitchen Sink page", () => {
-  examplePage.validateKitchenSinkTitleIsVisible();
+  ejemploPage.validateKitchenSinkTitleIsVisible();
+});
+
+Then("I should see the Commands section", () => {
+  ejemploPage.validateCommandsSectionIsVisible();
+});
+
+Then("the current URL should be valid", () => {
+  ejemploPage.validateCurrentUrl();
+});
+
+Then("I should validate the page using testing library", () => {
+  ejemploPage.validatePageUsingTestingLibrary();
 });
