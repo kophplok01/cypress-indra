@@ -1,4 +1,3 @@
-Feature: Example page
 Feature: Example page E2E validations
 
   Scenario: Validate example page content using reusable framework structure
