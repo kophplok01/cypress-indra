@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "cypress-cucumber-preprocessor": {
+    "json": {
+      "enabled": true,
+      "output": "reports/cucumber-json/cucumber-report.json"
+    }
+  },
   "scripts": {
     "cy:open": "cypress open",
     "cy:run": "cypress run",
@@ -12,7 +18,8 @@
     "cy:open:pro": "cross-env ENVIRONMENT=pro cypress open",
     "cy:run:dev": "cross-env ENVIRONMENT=dev cypress run",
     "cy:run:pre": "cross-env ENVIRONMENT=pre cypress run",
-    "cy:run:pro": "cross-env ENVIRONMENT=pro cypress run"
+    "cy:run:pro": "cross-env ENVIRONMENT=pro cypress run",
+    "report:cucumber": "node scripts/generate-cucumber-report.js"
   },
   "keywords": [],
   "author": "",
@@ -31,6 +38,7 @@
     "cypress-if": "^1.13.2",
     "cypress-mochawesome-reporter": "^4.0.2",
     "cypress-multi-reporters": "^2.0.5",
+    "cypress-on-fix": "^1.1.0",
     "cypress-plugin-api": "^2.11.2",
     "cypress-real-events": "^1.15.0",
     "cypress-wait-until": "^3.0.2",
@@ -41,6 +49,7 @@
     "mochawesome": "^7.1.4",
     "mochawesome-merge": "^5.1.1",
     "mochawesome-report-generator": "^6.3.2",
+    "multiple-cucumber-html-reporter": "^3.10.0",
     "uuid": "^13.0.0"
   }
 }
