@@ -1,10 +1,10 @@
 class ExamplePage {
   visit() {
-    cy.visit("/");
+    cy.openHomePage();
   }
 
   validateKitchenSinkTitleIsVisible() {
-    cy.contains("Kitchen Sink").should("be.visible");
+    cy.validateTextIsVisible("Kitchen Sink");
   }
 }
 
