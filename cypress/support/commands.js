@@ -15,3 +15,39 @@ Cypress.Commands.add("waitUntilTextIsVisible", (text) => {
     cy.contains(text).then(($element) => $element.is(":visible"))
   );
 });
+
+Cypress.Commands.add("addApiTestContext", (title, value = null, takeScreenshot = false) => {
+  cy.addTestContext({
+    title,
+    value,
+  });
+
+  if (takeScreenshot) {
+    const screenshotName = title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
+
+    cy.screenshot(`api/${screenshotName}`, {
+      capture: "runner",
+    });
+  }
+});
+
+Cypress.Commands.add("addUiTestContext", (title, value = null, takeScreenshot = false) => {
+  cy.addTestContext({
+    title,
+    value,
+  });
+
+  if (takeScreenshot) {
+    const screenshotName = title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
+
+    cy.screenshot(`ui/${screenshotName}`, {
+      capture: "viewport",
+    });
+  }
+});

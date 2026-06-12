@@ -11,11 +11,11 @@ class EjemploPage {
     cy.validateTextIsVisible("Commands");
   }
 
-    validateSectionIsVisible(section) {
-        cy.get("a:visible")
-         .contains(section)
-         .should("be.visible");
-    }
+  validateSectionIsVisible(section) {
+    cy.contains("a:visible", section)
+      .scrollIntoView()
+      .should("be.visible");
+  }
 
   validateCurrentUrl() {
     cy.validateUrlContains("example.cypress.io");

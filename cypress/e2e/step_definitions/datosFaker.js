@@ -5,9 +5,15 @@ import { buildWelcomeMessage } from "../../utils/templateUtils";
 let userData;
 let welcomeMessage;
 let postRequestBody;
+let apiResponse;
 
 Given("I generate synthetic user data", () => {
   userData = createUserData();
+
+  cy.addApiTestContext(
+    "Generated synthetic user data",
+    userData
+  );
 });
 
 Then("the generated user data should be valid", () => {
@@ -18,6 +24,20 @@ Then("the generated user data should be valid", () => {
   expect(userData.fullName).to.include(userData.lastName);
   expect(userData.email).to.include("@");
   expect(userData.createdAt).to.match(/^\d{4}-\d{2}-\d{2}$/);
+
+  cy.addApiTestContext(
+    "Synthetic user data validation result",
+    {
+      idIsValid: Boolean(userData.id),
+      firstNameIsValid: Boolean(userData.firstName),
+      lastNameIsValid: Boolean(userData.lastName),
+      fullNameIsValid:
+        userData.fullName.includes(userData.firstName) &&
+        userData.fullName.includes(userData.lastName),
+      emailIsValid: userData.email.includes("@"),
+      createdAtIsValid: /^\d{4}-\d{2}-\d{2}$/.test(userData.createdAt),
+    }
+  );
 });
 
 Then("I should be able to build a welcome message", () => {
@@ -25,10 +45,24 @@ Then("I should be able to build a welcome message", () => {
 
   expect(welcomeMessage).to.include(userData.fullName);
   expect(welcomeMessage).to.include(userData.id);
+
+  cy.addApiTestContext(
+    "Generated welcome message",
+    {
+      welcomeMessage,
+      fullName: userData.fullName,
+      userId: userData.id,
+    }
+  );
 });
 
 Given("I create a post with faker data", () => {
   postRequestBody = createPostData();
+
+  cy.addApiTestContext(
+    "POST request body generated with faker",
+    postRequestBody
+  );
 
   cy.api({
     method: "POST",
@@ -36,6 +70,14 @@ Given("I create a post with faker data", () => {
     body: postRequestBody,
   }).then((response) => {
     apiResponse = response;
+
+    cy.addApiTestContext(
+      "POST response body",
+      {
+        status: apiResponse.status,
+        body: apiResponse.body,
+      }
+    );
   });
 });
 
@@ -44,4 +86,15 @@ Then("the created post response should contain the faker data", () => {
   expect(apiResponse.body.title).to.eq(postRequestBody.title);
   expect(apiResponse.body.body).to.eq(postRequestBody.body);
   expect(apiResponse.body.userId).to.eq(postRequestBody.userId);
+
+  cy.addApiTestContext(
+    "Created post validation result",
+    {
+      idWasReturned: Boolean(apiResponse.body.id),
+      titleMatches: apiResponse.body.title === postRequestBody.title,
+      bodyMatches: apiResponse.body.body === postRequestBody.body,
+      userIdMatches: apiResponse.body.userId === postRequestBody.userId,
+    },
+    { screenshot: true }
+  );
 });
