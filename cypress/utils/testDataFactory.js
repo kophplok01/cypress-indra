@@ -16,3 +16,11 @@ export function createUserData() {
     createdAt: dayjs().format("YYYY-MM-DD"),
   };
 }
+
+export function createPostData() {
+  return {
+    title: faker.lorem.sentence(),
+    body: faker.lorem.paragraph(),
+    userId: faker.number.int({ min: 1, max: 10 }),
+  };
+}

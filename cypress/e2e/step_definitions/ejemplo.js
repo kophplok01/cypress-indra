@@ -9,8 +9,8 @@ Then("I should see the Kitchen Sink page", () => {
   ejemploPage.validateKitchenSinkTitleIsVisible();
 });
 
-Then("I should see the Commands section", () => {
-  ejemploPage.validateCommandsSectionIsVisible();
+Then('I should see the {string} section', (section) => {
+  ejemploPage.validateSectionIsVisible(section);
 });
 
 Then("the current URL should be valid", () => {
