@@ -11,6 +11,12 @@ class EjemploPage {
     cy.validateTextIsVisible("Commands");
   }
 
+    validateSectionIsVisible(section) {
+        cy.get("a:visible")
+         .contains(section)
+         .should("be.visible");
+    }
+
   validateCurrentUrl() {
     cy.validateUrlContains("example.cypress.io");
   }

@@ -10,8 +10,8 @@ Given("I request a post by id", () => {
   });
 });
 
-Then("the response status should be 200", () => {
-  expect(apiResponse.status).to.eq(200);
+Then("the response status should be {int}", (statusCode) => {
+  expect(apiResponse.status).to.eq(statusCode);
 });
 
 Then("the response body should match the post schema", () => {

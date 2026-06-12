@@ -1,9 +1,10 @@
 import { Given, Then } from "@badeball/cypress-cucumber-preprocessor";
-import { createUserData } from "../../utils/testDataFactory";
+import { createUserData, createPostData } from "../../utils/testDataFactory";
 import { buildWelcomeMessage } from "../../utils/templateUtils";
 
 let userData;
 let welcomeMessage;
+let postRequestBody;
 
 Given("I generate synthetic user data", () => {
   userData = createUserData();
@@ -24,4 +25,23 @@ Then("I should be able to build a welcome message", () => {
 
   expect(welcomeMessage).to.include(userData.fullName);
   expect(welcomeMessage).to.include(userData.id);
+});
+
+Given("I create a post with faker data", () => {
+  postRequestBody = createPostData();
+
+  cy.api({
+    method: "POST",
+    url: `${Cypress.env("apiUrl")}/posts`,
+    body: postRequestBody,
+  }).then((response) => {
+    apiResponse = response;
+  });
+});
+
+Then("the created post response should contain the faker data", () => {
+  expect(apiResponse.body).to.have.property("id");
+  expect(apiResponse.body.title).to.eq(postRequestBody.title);
+  expect(apiResponse.body.body).to.eq(postRequestBody.body);
+  expect(apiResponse.body.userId).to.eq(postRequestBody.userId);
 });
