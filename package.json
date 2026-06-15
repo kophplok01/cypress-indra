@@ -1,0 +1,58 @@
+{
+  "name": "cypressproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": "cypress/e2e/step_definitions/**/*.js",
+    "json": {
+      "enabled": true,
+      "output": "reports/cucumber-json/cucumber-report.json"
+    }
+  },
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "validate:gherkin": "node scripts/validate-gerkin.js",
+    "cy:open:dev": "cross-env ENVIRONMENT=dev cypress open",
+    "cy:open:pre": "cross-env ENVIRONMENT=pre cypress open",
+    "cy:open:pro": "cross-env ENVIRONMENT=pro cypress open",
+    "cy:run:dev": "cross-env ENVIRONMENT=dev cypress run",
+    "cy:run:pre": "cross-env ENVIRONMENT=pre cypress run",
+    "cy:run:pro": "cross-env ENVIRONMENT=pro cypress run",
+    "report:cucumber": "node scripts/generate-cucumber-report.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "24.0.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "2.2.8",
+    "@cucumber/gherkin-utils": "11.0.0",
+    "@cypress/browserify-preprocessor": "3.0.2",
+    "@faker-js/faker": "10.3.0",
+    "@testing-library/cypress": "10.1.0",
+    "add-context": "0.0.1",
+    "ajv": "8.17.1",
+    "cors": "2.8.6",
+    "cross-env": "10.1.0",
+    "cypress": "15.16.0",
+    "cypress-ajv-schema-validator": "2.0.2",
+    "cypress-if": "1.13.2",
+    "cypress-mochawesome-reporter": "4.0.2",
+    "cypress-multi-reporters": "2.0.5",
+    "cypress-on-fix": "1.1.0",
+    "cypress-plugin-api": "2.11.2",
+    "cypress-real-events": "1.15.0",
+    "cypress-wait-until": "3.0.2",
+    "dayjs": "1.11.19",
+    "esbuild": "0.27.3",
+    "fs-extra": "11.3.3",
+    "handlebars": "4.7.8",
+    "mochawesome": "7.1.4",
+    "mochawesome-merge": "5.1.1",
+    "mochawesome-report-generator": "6.3.2",
+    "multiple-cucumber-html-reporter": "3.10.0",
+    "uuid": "13.0.0"
+  }
+}
